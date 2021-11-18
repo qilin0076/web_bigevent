@@ -30,7 +30,7 @@ $(function() {
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "http://api-breakingnews-web.itheima.net/api/reguser",
+            url: "/api/reguser",
             data: {
                 username: $('#form_reg [name=username]').val(),
                 password: $('#form_reg [name=password]').val(),
@@ -53,7 +53,7 @@ $(function() {
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "http://api-breakingnews-web.itheima.net/api/login",
+            url: "/api/login",
             // 快速获取表单内的数据（必须要包含name属性)
             data: $(this).serialize(),
             success: function(response) {

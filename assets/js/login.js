@@ -69,7 +69,8 @@ $(function() {
                 localStorage.setItem('token', response.token);
                 layer.msg("登录成功");
                 console.log(response.token);
-                // location.href="/url" 当前页面打开URL页面
+                location.href = "index.html"; // 当前页面打开URL页面 location.href：获取或者设置整个url 如果没有添加域名则url路径就是链接该js的html文件的上层路径拼接赋的值，如果有域名就直接跳转该完整路径
+
             }
         });
     });

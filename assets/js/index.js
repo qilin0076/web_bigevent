@@ -1,10 +1,23 @@
 $(function() {
     // 调用函数
     getUserInfo();
+    // 退出模块
+    $('#btnLogout').on('click', function() {
+        // confirm layui 询问框
+        // 导出layer模块
+        var layer = layui.layer;
+        layer.confirm('确定退出登录？', { icon: 3, title: '提示' }, function(index) {
+            // 1.清除本地的token
+            localStorage.removeItem('token');
+            // 2.重新跳转到登录页面
+            location.href = 'login.html';
+            // 官方提供关闭询问框代码
+            layer.close(index);
+        });
+    });
 });
 // 获取用户的基本信息
 function getUserInfo() {
-    console.log(1);
     $.ajax({
         type: "GET",
         url: "/my/userinfo",
@@ -21,7 +34,7 @@ function getUserInfo() {
             }
             // 调用renderAvatar函数渲染用户的头像
             renderAvatar(response.data);
-        }
+        },
     });
 };
 // 渲染用户头像
@@ -39,5 +52,5 @@ function renderAvatar(user) {
         var firstName = name[0].toUpperCase();
         $('.text-avatar').html(firstName).show();
         $('.layui-nav-img').attr('src', user.user_pic).hide();
-    }
-}
+    };
+};
